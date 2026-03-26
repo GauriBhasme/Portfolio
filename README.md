@@ -32,7 +32,7 @@ Designed to showcase skills, projects, and experience with dynamic rendering fro
 
 2. Open the project folder
 
-3. Launch `index.html` in your browser
+3. Launch `index.html` in your browser ........
 
 No build tools or dependencies required.
 
