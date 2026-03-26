@@ -1,0 +1,87 @@
+/* .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+} */
+
+.projects-grid {
+  display: grid;
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px; /* ensures enough space for 3 cards */
+  margin: 0 auto; /* center on page */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Media queries for precise control */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards on tablet */
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr; /* 1 card on mobile */
+  }
+}
+
+/* card */
+
+.project-card {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+/* tag */
+
+.project-tag {
+  background: #ff4d6d20;
+  color: #ff4d6d;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+/* tech badges */
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-badge {
+  background: #f0f0f5;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* github button */
+
+.github-btn {
+  margin-top: auto;
+  background: #ff4d6d;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.github-btn:hover {
+  background: #e63b5b;
+}

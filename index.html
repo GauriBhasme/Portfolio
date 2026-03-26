@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/herosection.css">
+  <link rel="stylesheet" href="css/aboutsection.css">
+  <link rel="stylesheet" href="css/skillsection.css">
+  <link rel="stylesheet" href="css/projectsection.css">
+  <link rel="stylesheet" href="css/experiencesection.css">
+  <link rel="stylesheet" href="css/contactsection.css">
+  <!-- font-awesome cdn js -->
+  <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="Icon" href="./assets/Icon.png" type="image/x-icon">
+</head>
+
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="navbar">
+
+  <div class="logo">MyPortfolio</div>
+
+  <nav class="nav-links" id="navMenu">
+    <a href="#hero"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="#about"><i class="fa-solid fa-user"></i> About</a>
+    <a href="#skills"><i class="fa-solid fa-code"></i> Skills</a>
+    <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+    <a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+    <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+  </nav>
+
+  <div class="menu-toggle" id="menuToggle">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+</header>
+
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero section">
+
+  <!-- LEFT CONTENT -->
+  <div class="hero-text">
+
+    <p class="intro" id="heroIntro"></p>
+
+    <h1 id="heroTitle"></h1>
+
+    <p class="description" id="heroDesc"></p>
+
+    <div class="socials" id="heroSocials"></div>
+
+  </div>
+
+  <!-- RIGHT IMAGE -->
+  <div class="hero-image">
+    <img id="heroImage" alt="Profile">
+  </div>
+
+</section>
+
+
+
+  <!-- ===== ABOUT SECTION ===== -->
+<section id="about" class="about" >
+
+  <h2 class="section-title">About Me</h2>
+
+  <div class="about-container">
+
+    <!-- IMAGE SIDE -->
+    <div class="about-image">
+      <div class="image-ring">
+        <img style="height:250px; width:250px; border-radius: 50%;" src="./assets/profile.jpg" alt="About Me">
+      </div>
+    </div>
+
+    <!-- TEXT SIDE -->
+  
+    <div  class="about-content">
+
+      <p>
+        I’m a passionate developer focused on creating modern,
+        responsive, and user-friendly web experiences. I enjoy
+        solving real problems through clean design and efficient code.
+      </p>
+
+      <p>
+        My goal is to continuously learn, build impactful projects,
+        and grow as a professional developer.
+      </p>
+
+      <div class="about-socials">
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+  <!-- ===== SKILLS ===== -->
+  <section class="skills" id="skills">
+
+  <h2 class="section-title">My Skills</h2>
+
+  <div class="skills-grid" id="skillsContainer">
+    <!-- dynamic skills appear here -->
+  </div>
+
+</section>
+
+
+
+  <!-- ===== PROJECTS ===== -->
+ <section class="projects" id="projects">
+
+  <h2 class="section-title">Projects</h2>
+
+  <div class="projects-grid" id="projectsContainer">
+    <!-- dynamic cards -->
+  </div>
+
+</section>
+
+
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="experience" id="experience">
+
+  <h2 class="section-title">Experience</h2>
+
+  <div class="experience-grid" id="experienceContainer">
+    <!-- dynamic cards -->
+  </div>
+
+</section>
+
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact" id="contact">
+
+  <h2 class="section-title">Contact Me</h2>
+
+  <div class="contact-wrapper">
+
+    <!-- Left: Contact Info -->
+    <div class="contact-info">
+      <h3>Let's discuss something cool together</h3>
+      <p><i class="fa-solid fa-envelope"></i> annasmith@gmail.com</p>
+      <p><i class="fa-solid fa-phone"></i> +91 45678900</p>
+      <p><i class="fa-solid fa-location-dot"></i> India</p>
+
+      <a href="./js/Resume-Templates.pdf" download class="resume-btn">
+        Download Resume
+      </a>
+
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+
+    <!-- Right: Contact Form -->
+    <form class="contact-form" id="contactForm">
+      <p>I’m interested in:</p>
+      <div class="interests">
+        <button type="button" class="interest-btn active">UI/UX Design</button>
+        <button type="button" class="interest-btn">Web Design</button>
+        <button type="button" class="interest-btn">Graphic Design</button>
+        <button type="button" class="interest-btn">Other</button>
+      </div>
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+      <button type="submit" class="send-btn">
+        <i class="fa-solid fa-paper-plane"></i> Send Message
+      </button>
+    </form>
+
+  </div>
+
+</section>
+
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>© 2026 My Portfolio</p>
+  </footer>
+
+
+  <!-- JS -->
+  <script src="js/data.js"></script>
+  <script src="js/render.js"></script>
+  <script src="./js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+/* ===== Skills Section Layout ===== */
+
+.skills {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+}
+
+/* grid layout */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* skill card */
+
+.skill-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+}
+
+/* header row */
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.skill-header p {
+  font-size: 13px;
+  color: #888;
+}
+
+/* progress bar */
+
+.progress {
+  background: #eee;
+  height: 8px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #ff4d6d;
+  transition: width 0.6s ease;
+}
+
+/* percent label */
+
+.skill-percent {
+  font-size: 14px;
+  color: #666;
+  margin-top: 6px;
+  display: inline-block;
+}
+
+/* ===== Responsive Safety ===== */
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}

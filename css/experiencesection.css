@@ -1,0 +1,66 @@
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+/* card */
+
+.experience-card {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.25s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-6px);
+}
+
+/* tag */
+
+.exp-tag {
+  background: #ff4d6d20;
+  color: #ff4d6d;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+/* duration */
+
+.exp-duration {
+  font-size: 13px;
+  color: #888;
+}
+
+/* location */
+
+.exp-location {
+  font-size: 14px;
+  color: #666;
+}
+
+/* task list */
+
+.exp-tasks {
+  margin-top: 5px;
+  padding-left: 18px;
+  color: #555;
+  font-size: 14px;
+}
+
+.exp-tasks li {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,198 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  background: #f8f9fc;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 100vh; */
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* =========================
+   DESIGN VARIABLES
+========================= */
+
+:root {
+
+  /* colors */
+  --primary: #ff4d6d;
+  --dark: #1f1f25;
+  --light: #ffffff;
+  --text-muted: #666;
+
+  /* spacing */
+  --section-padding: 80px 8%;
+
+  /* effects */
+  --radius: 14px;
+  --shadow-soft: 0 6px 18px rgba(0,0,0,0.08);
+
+}
+
+
+/* =========================
+   GLOBAL ELEMENT STYLES
+========================= */
+
+h1, h2, h3 {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+p {
+  color: var(--text-muted);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background: var(--light);
+  padding: 18px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-soft);
+  z-index: 1000;
+  width: 100%;
+}
+
+.navbar nav a {
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.navbar nav a:hover {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+
+/* =========================
+   SECTION LAYOUT
+========================= */
+
+.section {
+  padding: var(--section-padding);
+  min-height: 80vh;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  text-align: center;
+  padding: 30px;
+  background: var(--dark);
+  color: white;
+  width: 100%;
+}
+
+
+/* =========================
+   REUSABLE CARD STYLE
+========================= */
+
+.card {
+  background: var(--light);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 6%;
+  }
+
+}
+
+/* ================= NAVBAR RESPONSIVE ================= */
+
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* mobile layout */
+
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 260px;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    padding: 80px 20px;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+  }
+
+  .nav-links a {
+    margin: 15px 0;
+    font-size: 18px;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+}
