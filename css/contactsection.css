@@ -1,6 +1,6 @@
 .contact {
   padding: var(--section-padding);
-  background: #f8f9fc;
+  background: var(--bg-secondary);
 }
 
 .contact-wrapper {
@@ -11,7 +11,7 @@
 
 .contact-info, .contact-form {
   flex: 1 1 400px;
-  background: white;
+  background: var(--card-bg);
   padding: 30px;
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
@@ -40,7 +40,7 @@
 }
 
 .resume-btn:hover {
-  background: #e63b5b;
+  filter: brightness(0.95);
 }
 
 .social-icons {
@@ -73,10 +73,11 @@
 }
 
 .interest-btn {
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 5px 15px;
-  background: white;
+  background: var(--card-bg);
+  color: var(--text);
   cursor: pointer;
   transition: 0.2s;
   font-size: 14px;
@@ -94,8 +95,10 @@
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border);
   border-radius: 8px;
+  background: var(--bg-secondary);
+  color: var(--text);
   font-size: 14px;
 }
 
@@ -114,5 +117,5 @@
 }
 
 .send-btn:hover {
-  background: #e63b5b;
+  filter: brightness(0.95);
 }

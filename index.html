@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <title>My Portfolio</title>
 
+  <script>
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-theme");
+    }
+  </script>
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/herosection.css">
@@ -16,6 +22,8 @@
   <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="Icon" href="./assets/Icon.png" type="image/x-icon">
+
+
 </head>
 
 <body>
@@ -32,6 +40,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
     <a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
     <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+    <button id="theme-toggle">
+  <i id="theme-icon" class="fa-solid fa-moon"></i>
+</button>
   </nav>
 
   <div class="menu-toggle" id="menuToggle">
@@ -173,7 +184,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     </div>
 
     <!-- Right: Contact Form -->
-    <form class="contact-form" id="contactForm">
+    <form class="contact-form" id="contactForm" >
       <p>I’m interested in:</p>
       <div class="interests">
         <button type="button" class="interest-btn active">UI/UX Design</button>
@@ -182,8 +193,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         <button type="button" class="interest-btn">Other</button>
       </div>
 
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="from_name" placeholder="Your Name" required>
+      <input type="email" name="reply_to" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
 
       <button type="submit" class="send-btn">
@@ -207,6 +218,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   <script src="js/data.js"></script>
   <script src="js/render.js"></script>
   <script src="./js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+  emailjs.init("m_c-kH3AQ-44sNSaL");
+</script>
+  <script src="./js/submitForm.js"></script>
 
 </body>
 </html>

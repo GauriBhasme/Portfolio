@@ -4,6 +4,7 @@ function renderHero() {
 
   document.getElementById("heroIntro").textContent = hero.intro;
 
+  //NOT secure innerHtml
   document.getElementById("heroTitle").innerHTML =
     `Hi, I'm <span>${hero.name}</span><br>a ${hero.title}.`;
 

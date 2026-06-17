@@ -15,3 +15,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+//dark theme 
+
+const toggleBtn = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
+
+function updateIcon(isDark) {
+  themeIcon.className = isDark
+    ? "fa-regular fa-sun"
+    : "fa-solid fa-moon";
+}
+
+const isDark = localStorage.getItem("theme") === "dark";
+
+if (isDark) {
+  document.body.classList.add("dark-theme");
+}
+
+updateIcon(isDark);
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark-theme");
+
+  const darkMode = document.body.classList.contains("dark-theme");
+
+  localStorage.setItem("theme", darkMode ? "dark" : "light");
+  updateIcon(darkMode);
+});
+
+

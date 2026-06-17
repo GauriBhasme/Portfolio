@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 50px 8%;
+  padding: var(--section-padding);
   min-height: 80vh;
 }
 
@@ -14,7 +14,7 @@
 
 .intro {
   letter-spacing: 3px;
-  color: #777;
+  color: var(--text-muted);
   margin-bottom: 15px;
 }
 
@@ -24,11 +24,11 @@
 }
 
 .hero-text span {
-  color: #ff2e63;
+  color: var(--primary);
 }
 
 .description {
-  color: #555;
+  color: var(--text-muted);
   margin-bottom: 25px;
 }
 
@@ -37,24 +37,25 @@
   display: inline-block;
   margin-right: 15px;
   font-size: 25px;
-  color: #444;
+  color: var(--text);
+  background: var(--card-bg);
   transition: 0.3s;
-  box-shadow: #b7b6b6 0px 2px 5px;
+  box-shadow: var(--shadow-soft);
   /* padding: 0.8rem 1rem 0.8rem 1rem; */
-  padding:0.8rem;
-  border-radius: 5px;
+  padding: 0.8rem;
+  border-radius: var(--radius);
 }
 
 .socials a:hover {
-  color: #ff2e63;
+  color: var(--primary);
 }
 
 /* IMAGE */
 .hero-image img {
   width: auto;
   height: 350px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
 }
 
 /* RESPONSIVE */

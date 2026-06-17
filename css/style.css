@@ -17,8 +17,8 @@ html {
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
-  background: #f8f9fc;
-  color: #222;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,21 +38,35 @@ body {
 ========================= */
 
 :root {
-
-  /* colors */
   --primary: #ff4d6d;
-  --dark: #1f1f25;
-  --light: #ffffff;
-  --text-muted: #666;
-
-  /* spacing */
+  --bg: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --card-bg: #ffffff;
+  --text: #18181B;
+  --text-muted: #666666;
+  --dark: var(--text);
+  --light: var(--card-bg);
+  --border: #e4e4e7;
   --section-padding: 80px 8%;
-
-  /* effects */
   --radius: 14px;
-  --shadow-soft: 0 6px 18px rgba(0,0,0,0.08);
-
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
+
+body.dark-theme {
+  --primary: #ff5d7a;
+  --bg: #18181B;
+  --bg-secondary: #222225;
+  --card-bg: #2A2A2E;
+  --text: #FAFAFA;
+  --text-muted: #A1A1AA;
+  --dark: var(--text);
+  --light: var(--card-bg);
+  --border: #3f3f46;
+  --section-padding: 80px 8%;
+  --radius: 14px;
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
 
 
 /* =========================
@@ -87,6 +101,7 @@ a {
   justify-content: space-between;
   align-items: center;
   box-shadow: var(--shadow-soft);
+  gap:1rem;
   z-index: 1000;
   width: 100%;
 }
@@ -104,7 +119,16 @@ a {
   display: flex;
   align-items: center;
 }
+.navbar i{
+  font-size: 1.5rem;
+  margin-left: 20px;
+  cursor: pointer;
+}
 
+#theme-toggle{
+  border: none;
+  background-color: var(--light);
+}
 
 /* =========================
    SECTION LAYOUT
@@ -123,8 +147,8 @@ a {
 .footer {
   text-align: center;
   padding: 30px;
-  background: var(--dark);
-  color: white;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
   width: 100%;
 }
 
@@ -179,7 +203,7 @@ a {
     right: -100%;
     width: 260px;
     height: 100vh;
-    background: white;
+    background: var(--card-bg);
     flex-direction: column;
     padding: 80px 20px;
     box-shadow: -4px 0 15px rgba(0,0,0,0.1);

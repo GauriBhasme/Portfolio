@@ -18,10 +18,10 @@
 /* skill card */
 
 .skill-card {
-  background: white;
+  background: var(--card-bg);
   padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
   transition: transform 0.2s ease;
 }
 
@@ -40,13 +40,13 @@
 
 .skill-header p {
   font-size: 13px;
-  color: #888;
+  color: var(--text-muted);
 }
 
 /* progress bar */
 
 .progress {
-  background: #eee;
+  background: var(--bg-secondary);
   height: 8px;
   border-radius: 20px;
   overflow: hidden;
@@ -54,7 +54,7 @@
 
 .progress-bar {
   height: 100%;
-  background: #ff4d6d;
+  background: var(--primary);
   transition: width 0.6s ease;
 }
 
@@ -62,7 +62,7 @@
 
 .skill-percent {
   font-size: 14px;
-  color: #666;
+  color: var(--text-muted);
   margin-top: 6px;
   display: inline-block;
 }

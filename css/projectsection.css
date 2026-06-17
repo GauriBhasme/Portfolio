@@ -29,10 +29,10 @@
 /* card */
 
 .project-card {
-  background: white;
+  background: var(--card-bg);
   padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -46,8 +46,8 @@
 /* tag */
 
 .project-tag {
-  background: #ff4d6d20;
-  color: #ff4d6d;
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  color: var(--primary);
   font-size: 12px;
   padding: 5px 10px;
   border-radius: 20px;
@@ -63,7 +63,8 @@
 }
 
 .tech-badge {
-  background: #f0f0f5;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
   padding: 5px 9px;
   border-radius: 20px;
   font-size: 12px;
@@ -73,7 +74,7 @@
 
 .github-btn {
   margin-top: auto;
-  background: #ff4d6d;
+  background: var(--primary);
   color: white;
   padding: 10px;
   text-align: center;
@@ -83,5 +84,5 @@
 }
 
 .github-btn:hover {
-  background: #e63b5b;
+  filter: brightness(0.95);
 }

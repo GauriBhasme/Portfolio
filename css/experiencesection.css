@@ -7,10 +7,10 @@
 /* card */
 
 .experience-card {
-  background: white;
+  background: var(--card-bg);
   padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -24,8 +24,8 @@
 /* tag */
 
 .exp-tag {
-  background: #ff4d6d20;
-  color: #ff4d6d;
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  color: var(--primary);
   font-size: 12px;
   padding: 5px 10px;
   border-radius: 20px;
@@ -36,14 +36,14 @@
 
 .exp-duration {
   font-size: 13px;
-  color: #888;
+  color: var(--text-muted);
 }
 
 /* location */
 
 .exp-location {
   font-size: 14px;
-  color: #666;
+  color: var(--text-muted);
 }
 
 /* task list */
@@ -51,7 +51,7 @@
 .exp-tasks {
   margin-top: 5px;
   padding-left: 18px;
-  color: #555;
+  color: var(--text-muted);
   font-size: 14px;
 }
 
