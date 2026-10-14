@@ -1,0 +1,227 @@
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: var(--s3);
+  align-items: start;
+}
+.contact-info,
+.contact-form {
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+.contact-list {
+  display: grid;
+  gap: var(--s2);
+  margin-bottom: var(--s3);
+}
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--muted);
+  word-break: break-word;
+}
+.contact-list i {
+  color: var(--accent);
+  width: 1.2rem;
+  text-align: center;
+}
+.contact-list a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+}
+.contact-list a:hover {
+  color: var(--accent);
+}
+.copy-btn {
+  margin-left: auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.copy-btn:hover {
+  color: var(--accent);
+  border-color: var(--border-strong);
+  transform: scale(1.1);
+}
+.copy-btn.done {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+.contact-info .socials {
+  margin-top: var(--s3);
+}
+fieldset.interests {
+  border: 0;
+  padding: 0;
+  margin: 0 0 var(--s3);
+}
+.interests legend {
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  padding: 0;
+}
+.interest-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.interest-row label {
+  cursor: pointer;
+}
+.interest-row input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.interest-row span {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: var(--pill);
+  border: 1px solid var(--border);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all 0.25s var(--ease);
+}
+.interest-row label:hover span {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.interest-row input:checked + span {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  transform: scale(1.04);
+}
+.interest-row input:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.field {
+  position: relative;
+  margin-bottom: var(--s2);
+}
+.field label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 0.35rem;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  resize: vertical;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s;
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.field.invalid input,
+.field.invalid textarea {
+  border-color: #f87171;
+}
+.light-theme .field.invalid input,
+.light-theme .field.invalid textarea {
+  border-color: #b91c1c;
+}
+.field-error {
+  color: #fca5a5;
+  font-size: 0.82rem;
+  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.25s,
+    opacity 0.25s,
+    margin 0.25s;
+}
+.light-theme .field-error {
+  color: #b91c1c;
+}
+.field.invalid .field-error {
+  max-height: 3rem;
+  opacity: 1;
+  margin-top: 0.3rem;
+}
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.send-btn {
+  width: 100%;
+  justify-content: center;
+}
+.send-btn .spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+.send-btn.loading .spinner {
+  display: inline-block;
+}
+.send-btn.loading i {
+  display: none;
+}
+.send-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.form-status {
+  margin-top: var(--s2);
+  font-weight: 600;
+  font-size: 0.92rem;
+  min-height: 1.4em;
+}
+.form-status.ok {
+  color: var(--accent);
+}
+.form-status.err {
+  color: #fca5a5;
+}
+.light-theme .form-status.err {
+  color: #b91c1c;
+}
+.form-fallback {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.form-fallback a {
+  color: var(--accent);
+}
+@media (max-width: 860px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+.contact-info .socials {
+  justify-content: flex-start;
+}

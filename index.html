@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anna Smith | Full-Stack &amp; AI Application Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Anna Smith: full-stack and AI-powered web applications built with security in mind. Projects, skills, experience and contact."
+    />
+    <meta name="theme-color" content="#0B1220" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Anna Smith | Full-Stack &amp; AI Application Developer"
+    />
+    <meta
+      property="og:description"
+      content="Full-stack and AI-powered applications, built with security in mind."
+    />
+    <meta property="og:image" content="assets/profile.jpg" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="./assets/Icon.png" type="image/png" />
+    <link
+      rel="preload"
+      href="assets/fonts/manrope.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script>
+      /* Apply saved theme before paint (dark is the default). */
+      try {
+        if (localStorage.getItem("theme") === "light")
+          document.documentElement.classList.add("light-theme");
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/herosection.css" />
+    <link rel="stylesheet" href="css/aboutsection.css" />
+    <link rel="stylesheet" href="css/skillsection.css" />
+    <link rel="stylesheet" href="css/projectsection.css" />
+    <link rel="stylesheet" href="css/securitysection.css" />
+    <link rel="stylesheet" href="css/experiencesection.css" />
+    <link rel="stylesheet" href="css/contactsection.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <header class="navbar" id="navbar">
+      <a class="logo" href="#hero" aria-label="Back to top"
+        ><span class="logo-mark">&lt;/&gt;</span>
+        <span id="logoName">Portfolio</span></a
+      >
+      <nav class="nav-links" id="navMenu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#engineering">Engineering</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button
+          id="theme-toggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Switch to light theme"
+        >
+          <i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true"></i>
+        </button>
+        <button
+          class="icon-btn menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="navMenu"
+        >
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section id="hero" class="hero section" aria-labelledby="heroTitle">
+        <div class="hero-text">
+          <p class="intro mono" id="heroIntro"></p>
+          <h1 id="heroTitle"></h1>
+          <p class="role-line" aria-live="off">
+            I'm an <span class="role-typed mono" id="roleTyped"></span
+            ><span class="caret" aria-hidden="true"></span>
+          </p>
+          <p class="description" id="heroDesc"></p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-magnetic" href="#projects"
+              >Explore my work
+              <i class="fa-solid fa-arrow-right arrow" aria-hidden="true"></i
+            ></a>
+            <a
+              class="btn btn-ghost btn-magnetic"
+              href="./js/Resume-Templates.pdf"
+              download
+              ><i class="fa-solid fa-download" aria-hidden="true"></i> Download
+              resume</a
+            >
+          </div>
+          <div class="socials" id="heroSocials"></div>
+          <dl class="stats" id="heroStats"></dl>
+        </div>
+        <div class="hero-visual" id="heroVisual">
+          <div class="photo-wrap">
+            <img
+              id="heroImage"
+              alt="Portrait of Anna Smith"
+              width="562"
+              height="700"
+              fetchpriority="high"
+            />
+          </div>
+          <ul class="float-tech" id="floatTech" aria-label="Technologies"></ul>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="about section" aria-labelledby="aboutTitle">
+        <div class="about-grid">
+          <div class="focus-list" id="focusList" role="list"></div>
+          <div class="about-content reveal">
+            <p class="mono kicker">About me</p>
+            <h2 id="aboutTitle"></h2>
+            <p class="about-lead" id="aboutLead"></p>
+            <div id="aboutText"></div>
+            <ul class="chips" id="aboutStrengths" aria-label="Strengths"></ul>
+            <p class="about-goal" id="aboutGoal"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="skills section" aria-labelledby="skillsTitle">
+        <div class="section-head reveal">
+          <p class="mono kicker">Skills</p>
+          <h2 id="skillsTitle">Technologies I work with</h2>
+        </div>
+        <div class="skills-grid" id="skillsContainer"></div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section
+        id="projects"
+        class="projects section"
+        aria-labelledby="projectsTitle"
+      >
+        <div class="section-head reveal">
+          <p class="mono kicker">Projects</p>
+          <h2 id="projectsTitle">Featured projects</h2>
+        </div>
+        <div class="projects-grid" id="projectsContainer"></div>
+      </section>
+
+      <!-- ENGINEERING / SECURITY -->
+      <section
+        id="engineering"
+        class="engineering section"
+        aria-labelledby="engTitle"
+      >
+        <div class="section-head reveal">
+          <p class="mono kicker">Engineering</p>
+          <h2 id="engTitle">Security is part of how I build</h2>
+          <p class="section-sub">
+            I'm a developer who designs with security in mind, not a security
+            specialist. These are the habits I am building into my projects as I
+            learn.
+          </p>
+        </div>
+        <figure class="flow reveal">
+          <svg
+            viewBox="0 0 760 150"
+            role="img"
+            aria-labelledby="flowT flowD"
+            class="flow-svg"
+          >
+            <title id="flowT">Request flow with security checkpoints</title>
+            <desc id="flowD">
+              A request travels from the browser to an API and then to the
+              database, passing input validation and authorization checks with
+              least-privilege access.
+            </desc>
+            <path id="flowPath" class="flow-line" d="M70 75 H690" />
+            <g class="flow-node">
+              <rect x="20" y="45" width="100" height="60" rx="12" />
+              <text x="70" y="80" text-anchor="middle">Browser</text>
+            </g>
+            <g class="flow-node">
+              <rect x="330" y="45" width="100" height="60" rx="12" />
+              <text x="380" y="80" text-anchor="middle">API</text>
+            </g>
+            <g class="flow-node">
+              <rect x="640" y="45" width="100" height="60" rx="12" />
+              <text x="690" y="80" text-anchor="middle">Database</text>
+            </g>
+            <g class="flow-gate">
+              <circle cx="225" cy="75" r="14" />
+              <text x="225" y="79" text-anchor="middle">✓</text>
+              <text x="225" y="122" text-anchor="middle" class="flow-cap">
+                Validate input
+              </text>
+            </g>
+            <g class="flow-gate">
+              <circle cx="535" cy="75" r="14" />
+              <text x="535" y="79" text-anchor="middle">✓</text>
+              <text x="535" y="122" text-anchor="middle" class="flow-cap">
+                Authorize &amp; limit access
+              </text>
+            </g>
+            <circle class="packet" r="6">
+              <animateMotion
+                dur="5s"
+                repeatCount="indefinite"
+                keyPoints="0;1"
+                keyTimes="0;1"
+                calcMode="linear"
+              >
+                <mpath href="#flowPath" />
+              </animateMotion>
+            </circle>
+          </svg>
+        </figure>
+        <div class="principles" id="principlesContainer"></div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section
+        id="experience"
+        class="experience section"
+        aria-labelledby="expTitle"
+      >
+        <div class="section-head reveal">
+          <p class="mono kicker">Experience</p>
+          <h2 id="expTitle">Hands-on experience</h2>
+        </div>
+        <ol class="timeline" id="experienceContainer"></ol>
+        <div id="eduContainer"></div>
+      </section>
+
+      <!-- CONTACT -->
+      <section
+        id="contact"
+        class="contact section"
+        aria-labelledby="contactTitle"
+      >
+        <div class="section-head reveal">
+          <p class="mono kicker">Contact</p>
+          <h2 id="contactTitle">Let's discuss something cool together</h2>
+        </div>
+        <div class="contact-wrapper">
+          <div class="contact-info card-fx reveal">
+            <ul class="contact-list">
+              <li>
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i
+                ><a id="emailLink" href="#"></a>
+                <button
+                  type="button"
+                  class="copy-btn"
+                  id="copyEmail"
+                  aria-label="Copy email address"
+                >
+                  <i class="fa-regular fa-copy" aria-hidden="true"></i>
+                </button>
+              </li>
+              <li>
+                <i class="fa-solid fa-phone" aria-hidden="true"></i
+                ><span id="phoneText"></span>
+              </li>
+              <li>
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i
+                ><span id="locationText"></span>
+              </li>
+            </ul>
+            <a href="./js/Resume-Templates.pdf" download class="btn btn-ghost"
+              ><i class="fa-solid fa-download" aria-hidden="true"></i> Download
+              resume</a
+            >
+            <div class="socials" id="contactSocials"></div>
+          </div>
+          <form class="contact-form card-fx reveal" id="contactForm" novalidate>
+            <fieldset class="interests">
+              <legend>I'm reaching out about</legend>
+              <div class="interest-row" id="inquiryTypes"></div>
+            </fieldset>
+            <div class="field">
+              <label for="f-name">Name</label
+              ><input
+                id="f-name"
+                type="text"
+                name="from_name"
+                autocomplete="name"
+                required
+                minlength="2"
+                maxlength="80"
+              />
+              <p class="field-error" id="e-name" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label
+              ><input
+                id="f-email"
+                type="email"
+                name="reply_to"
+                autocomplete="email"
+                required
+                maxlength="120"
+              />
+              <p class="field-error" id="e-email" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="f-msg">Message</label
+              ><textarea
+                id="f-msg"
+                name="message"
+                rows="5"
+                required
+                minlength="10"
+                maxlength="2000"
+              ></textarea>
+              <p class="field-error" id="e-msg" role="alert"></p>
+            </div>
+            <div class="hp" aria-hidden="true">
+              <label
+                >Leave this empty<input
+                  type="text"
+                  name="website"
+                  tabindex="-1"
+                  autocomplete="off"
+              /></label>
+            </div>
+            <button type="submit" class="btn btn-primary send-btn" id="sendBtn">
+              <span class="spinner" aria-hidden="true"></span
+              ><i class="fa-solid fa-paper-plane" aria-hidden="true"></i
+              ><span class="send-label">Send message</span>
+            </button>
+            <p
+              class="form-status"
+              id="formStatus"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <p class="form-fallback">
+              Prefer email? Write to <a id="fallbackEmail" href="#"></a>.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        © <span id="year">2026</span> <span id="footName">Portfolio</span>.
+        Built with HTML, CSS and JavaScript.
+      </p>
+      <a href="#hero" class="to-top"
+        >Back to top <i class="fa-solid fa-arrow-up" aria-hidden="true"></i
+      ></a>
+    </footer>
+
+    <dialog
+      class="project-modal"
+      id="projectModal"
+      aria-labelledby="pmTitle"
+    ></dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/render.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+      defer
+    ></script>
+    <script src="js/submitForm.js" defer></script>
+  </body>
+</html>

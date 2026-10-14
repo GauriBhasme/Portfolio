@@ -1,0 +1,96 @@
+.flow {
+  margin: 0 0 var(--s4);
+  padding: var(--s3);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+}
+.flow-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.flow-line {
+  stroke: var(--border-strong);
+  stroke-width: 2;
+  stroke-dasharray: 5 7;
+  fill: none;
+  animation: dash 14s linear infinite;
+}
+.flow-node rect {
+  fill: var(--bg);
+  stroke: var(--border-strong);
+}
+.flow-node text {
+  fill: var(--text);
+  font: 700 15px var(--font);
+}
+.flow-gate circle {
+  fill: var(--accent);
+  animation: gate 5s ease-in-out infinite;
+}
+.flow-gate:nth-of-type(5) circle {
+  animation-delay: 2.5s;
+}
+.flow-gate text {
+  fill: var(--accent-ink);
+  font: 800 14px var(--font);
+}
+.flow-gate .flow-cap {
+  fill: var(--muted);
+  font: 600 13px var(--font);
+}
+.packet {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+@keyframes gate {
+  0%,
+  100% {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.25);
+  }
+}
+.principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--s2);
+}
+.principle {
+  display: flex;
+  gap: var(--s2);
+  padding: var(--s3);
+  align-items: flex-start;
+}
+.principle .ico {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  transition: transform 0.4s var(--ease);
+}
+.principle:hover .ico {
+  transform: scale(1.12) rotate(-6deg);
+}
+.principle p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-top: 0.25rem;
+}
+@media (max-width: 640px) {
+  .flow {
+    padding: var(--s2);
+  }
+  .flow-svg {
+    min-width: 0;
+  }
+}

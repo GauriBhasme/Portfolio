@@ -1,0 +1,96 @@
+.timeline {
+  position: relative;
+  display: grid;
+  gap: var(--s3);
+  padding-left: clamp(1.5rem, 4vw, 2.5rem);
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--border);
+}
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--accent);
+  transform-origin: top;
+  transform: scaleY(var(--tl, 0));
+}
+.exp-card {
+  position: relative;
+  padding: var(--s3);
+}
+.exp-card::after {
+  content: "";
+  position: absolute;
+  left: calc(-1 * clamp(1.5rem, 4vw, 2.5rem) - 0px);
+  top: 1.8rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  transform: translateX(0);
+}
+.exp-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+.exp-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--pill);
+}
+.exp-duration {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.exp-location {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.2rem 0 0.8rem;
+}
+.exp-tasks li {
+  position: relative;
+  padding-left: 1.2rem;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+}
+.exp-tasks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--s2);
+  margin-top: var(--s4);
+}
+.edu-card {
+  padding: var(--s3);
+}
+.edu-card p {
+  color: var(--muted);
+}
