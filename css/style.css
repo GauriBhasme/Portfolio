@@ -235,6 +235,62 @@ ol {
 .nav-links a.active::after {
   transform: scaleX(1);
 }
+.nav-group {
+  position: relative;
+}
+.nav-group summary {
+  position: relative;
+  padding: 0.5rem 0.55rem;
+  border-radius: var(--pill);
+  color: var(--muted);
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.nav-group summary::-webkit-details-marker {
+  display: none;
+}
+.nav-group summary::after {
+  content: "▾";
+  margin-left: 0.35rem;
+  color: var(--accent);
+  font-size: 0.7rem;
+}
+.nav-group[open] summary,
+.nav-group summary:hover {
+  color: var(--text);
+}
+.nav-submenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  display: grid;
+  min-width: 180px;
+  padding: 0.45rem;
+  transform: translateX(-50%);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+.nav-group:not([open]) > .nav-submenu {
+  display: none;
+}
+.nav-submenu a {
+  padding: 0.55rem 0.75rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.nav-submenu a::after {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav-group:hover > .nav-submenu,
+  .nav-group:focus-within > .nav-submenu {
+    display: grid;
+  }
+}
 .nav-actions {
   display: flex;
   gap: 0.5rem;
@@ -432,7 +488,16 @@ a:hover > .arrow,
   transform: translate(-50%, 0);
 }
 /* ===== MOBILE NAV ===== */
-@media (max-width: 860px) {
+@media (min-width: 1101px) {
+  .nav-links {
+    gap: 0;
+  }
+  .nav-links a {
+    padding-inline: 0.55rem;
+    font-size: 0.82rem;
+  }
+}
+@media (max-width: 1100px) {
   .menu-toggle {
     display: grid;
   }
@@ -469,6 +534,33 @@ a:hover > .arrow,
   }
   .nav-links a.active {
     color: var(--accent);
+  }
+  .nav-group summary {
+    padding: 0.95rem 0.5rem;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    font-size: 1.05rem;
+  }
+  .nav-group[open] summary {
+    color: var(--accent);
+  }
+  .nav-submenu {
+    position: static;
+    display: grid;
+    min-width: 0;
+    padding: 0 0 0.35rem 1rem;
+    transform: none;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .nav-group:not([open]) > .nav-submenu {
+    display: none;
+  }
+  .nav-submenu a {
+    padding: 0.65rem 0.5rem;
+    font-size: 0.95rem;
   }
   .navbar {
     margin-left: 0;

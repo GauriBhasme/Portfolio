@@ -7,8 +7,10 @@ Open `index.html`, or serve the folder: `python3 -m http.server 8000` then visit
 Deploy by uploading the folder to any static host (GitHub Pages, Netlify, Vercel). All paths are relative.
 
 ## Edit your content: `js/data.js`
-Hero text and rotating roles, about, skill groups, projects, experience, education, certifications, contact details and security principles all live there.
-- Project detail view: add optional fields (`image`, `demo`, `problem`, `solution`, `contribution`, `architecture`, `decisions`, `security`, `lessons`, `next`). Only the fields you fill in are shown.
+Hero text and roles, about, skill groups, projects, practical experience, internships, hackathons, education, certifications, leadership, contact details and security principles all live there.
+- Project detail view: add optional fields (`image`, `live`, `video`, `problem`, `approach`, `impact`, `contribution`, `architecture`, `decisions`, `security`, `lessons`, `next`). Only the fields you fill in are shown.
+- Certificate, offer-letter, and demo-video actions open an in-page preview; the original file remains available as a fallback link.
+- Practical experience is rendered from `experience`; virtual experiences are rendered separately from `internships`.
 - `education` and `certifications` render only when they contain real entries.
 - Replace `js/Resume-Templates.pdf` with your resume (keep the filename or update the two links in `index.html`).
 

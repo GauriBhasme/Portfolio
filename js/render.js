@@ -16,10 +16,12 @@ const chips = (items, cls = "chip") =>
 
 function socialLinks(container, socials) {
   socials.forEach((s) => {
-    const label = (s.icon.match(/fa-(github|linkedin|instagram|twitter)/) || [
-      ,
-      "profile",
-    ])[1];
+    const label =
+      (s.icon.match(/fa-(github|linkedin|instagram|twitter)/) || [,
+        s.icon.includes("envelope") || s.icon.includes("email")
+          ? "email"
+          : "profile",
+      ])[1];
     container.appendChild(
       el(
         "a",
@@ -75,7 +77,7 @@ function renderHero() {
   [
     [portfolioData.projects.length, "Featured projects"],
     [techCount, "Technologies used"],
-    [portfolioData.experience.length, "Hands-on experiences"],
+    [portfolioData.education.length, "Education entries"],
   ].forEach(([n, label]) =>
     $("heroStats").appendChild(
       el("div", {}, [
@@ -208,6 +210,7 @@ function renderProjects() {
       {
         class: "project-card card-fx reveal",
         attrs: {
+          id: p.id || "",
           style: `--i:${i}`,
           role: "button",
           tabindex: "0",
@@ -242,6 +245,7 @@ function renderProjects() {
 /* Detail view: only sections that exist in data are shown, so nothing is invented. */
 function openProject(p) {
   const d = $("projectModal");
+  d.returnFocus = document.activeElement;
   d.textContent = "";
   const sec = (title, node) =>
     node && el("div", {}, [el("h4", { text: title }), node]);
@@ -310,7 +314,8 @@ function openProject(p) {
         el("h3", { text: p.name, attrs: { id: "pmTitle" } }),
         el("p", { text: p.description }),
         sec("Problem", text(p.problem)),
-        sec("Solution", text(p.solution)),
+        sec("How I built it", text(p.approach || p.solution)),
+        sec("Impact", text(p.impact)),
         sec("Key features", list(p.features)),
         sec("My contribution", text(p.contribution)),
         sec(
@@ -322,11 +327,294 @@ function openProject(p) {
         sec("Security & reliability", list(p.security)),
         sec("Lessons learned", text(p.lessons)),
         sec("Next steps", list(p.next)),
+        p.video
+          ? mediaButton(p.video, `${p.name} demo video`, "video")
+          : null,
         links,
       ].filter(Boolean),
     ),
   );
   d.showModal();
+}
+
+function mediaButton(url, label, type) {
+  const button = el(
+    "button",
+    {
+      class: "btn btn-ghost",
+      attrs: { type: "button" },
+    },
+    [
+      icon(type === "video" ? "fa-solid fa-video" : "fa-solid fa-eye"),
+      document.createTextNode(label),
+    ],
+  );
+  button.addEventListener("click", () => openMediaPreview(url, label, type));
+  return button;
+}
+
+function openMediaPreview(url, title, type) {
+  const d = $("projectModal");
+  d.returnFocus = document.activeElement;
+  d.textContent = "";
+  const close = el(
+    "button",
+    {
+      class: "icon-btn pm-close",
+      attrs: { type: "button", "aria-label": "Close media preview" },
+    },
+    icon("fa-solid fa-xmark"),
+  );
+  close.addEventListener("click", () => d.close());
+  const isPdf = /\.pdf(?:$|[?#])/i.test(url);
+  const content =
+    type === "video"
+      ? el("iframe", {
+          class: "media-frame",
+          attrs: {
+            src: url.replace(/\/view(?:\?[^#]*)?$/i, "/preview"),
+            title,
+            allow:
+              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
+            allowfullscreen: "",
+          },
+        })
+      : isPdf
+        ? el("iframe", {
+            class: "media-frame document-frame",
+            attrs: { src: url, title },
+          })
+        : el("img", {
+            class: "media-image",
+            attrs: { src: url, alt: title },
+          });
+  d.appendChild(
+    el("div", { class: "pm-inner media-preview" }, [
+      close,
+      el("h3", { text: title, attrs: { id: "pmTitle" } }),
+      content,
+      el(
+        "a",
+        {
+          class: "media-fallback",
+          attrs: { href: url, target: "_blank", rel: "noopener noreferrer" },
+        },
+        [document.createTextNode("Open original file")],
+      ),
+    ]),
+  );
+  d.showModal();
+}
+
+function openPortfolioDetail(item, type) {
+  const d = $("projectModal");
+  d.returnFocus = document.activeElement;
+  d.textContent = "";
+  const close = el(
+    "button",
+    {
+      class: "icon-btn pm-close",
+      attrs: { type: "button", "aria-label": `Close ${type} details` },
+    },
+    icon("fa-solid fa-xmark"),
+  );
+  close.addEventListener("click", () => d.close());
+  const field = (label, value, isList = false) => {
+    if (!value || (Array.isArray(value) && !value.length)) return null;
+    const content = isList
+      ? el(
+          "ul",
+          { class: "bul" },
+          value.map((entry) => el("li", { text: entry })),
+        )
+      : el("p", { text: value });
+    return el("div", {}, [el("h4", { text: label }), content]);
+  };
+  const solution = item.solution || {};
+  const achievement =
+    typeof item.achievement === "object"
+      ? [item.achievement.position, item.achievement.recognition]
+          .filter(Boolean)
+          .join(" · ")
+      : item.achievement;
+  const aiIntegration = Array.isArray(solution.aiIntegration)
+    ? solution.aiIntegration.join(", ")
+    : solution.aiIntegration;
+  const links = el("div", { class: "pm-links" });
+  [["offerLetter", "Offer letter"], ["certificate", "Certificate"]].forEach(
+    ([key, label]) => {
+      if (item[key])
+        links.appendChild(mediaButton(item[key], `Preview ${label}`, "document"));
+    },
+  );
+  if (item.linkedProjectId) {
+    const project = portfolioData.projects.find(
+      (entry) => entry.id === item.linkedProjectId,
+    );
+    if (project) {
+      const projectLink = el(
+          "a",
+          {
+            class: "btn btn-primary",
+            attrs: {
+              href: `#${project.id}`,
+              "aria-label": `View ${project.name} in the projects section`,
+            },
+          },
+          [
+            document.createTextNode(`View ${project.name} project`),
+            icon("fa-solid fa-arrow-down"),
+          ],
+      );
+      projectLink.addEventListener("click", () => d.close());
+      links.appendChild(projectLink);
+    }
+  }
+  d.appendChild(
+    el(
+      "div",
+      { class: "pm-inner" },
+      [
+        close,
+        el("span", { class: "project-tag", text: type }),
+        el("h3", {
+          text: item.name || item.role || item.title,
+          attrs: { id: "pmTitle" },
+        }),
+        ...[
+          field("Type", item.type),
+          field("Issuer", item.issuer),
+          field("Organizer", item.organizer),
+          field("Organization", item.organization),
+          field("Platform", item.platform),
+          field("Experience type", item.experienceType),
+          field("Offered by", item.offeredBy),
+          field("Date", item.date),
+          field("Duration", item.duration),
+          field("Role", item.role || item.myRole || item.team?.role),
+          field("Domain", item.domain),
+          field("Location", item.location),
+          field("Challenge", item.problem || item.problemSolved),
+          field("Solution", item.solution?.description || item.solution),
+          field("Features", solution.features, true),
+          field("AI integration", aiIntegration),
+          field("Tech stack", item.techStack, true),
+          field("Team members", item.teamMembers),
+          field(
+            "Practical work / contribution",
+            item.contribution || item.contributions,
+            true,
+          ),
+          field("Skills", item.skills, true),
+          field("What I learnt", item.learned || item.whatILearned, true),
+          field("Achievement", achievement),
+          field("Specialization", item.specialization),
+          field("Testing skills", item.testingSkills, true),
+          field("Testing activities", item.testingActivities, true),
+          field("Documentation", item.documentation?.description),
+        ].filter(Boolean),
+        links.childNodes.length ? links : null,
+      ].filter(Boolean),
+    ),
+  );
+  d.showModal();
+}
+
+function renderDetailCards(containerId, items, type, emptyMessage) {
+  const container = $(containerId);
+  if (!items.length) {
+    container.appendChild(
+      el("p", { class: "details-empty", text: emptyMessage }),
+    );
+    return;
+  }
+
+  items.forEach((item, i) => {
+    const title = item.name || item.role || item.title;
+    const summary =
+      item.description ||
+      item.problemSolved ||
+      item.achievement?.recognition ||
+      item.achievement ||
+      item.offeredBy ||
+      item.issuer;
+    const cover = item.coverImage
+      ? el("img", {
+          class: "detail-cover",
+          attrs: { src: item.coverImage, alt: `${title} cover`, loading: "lazy" },
+        })
+      : null;
+    const card = el(
+      "article",
+      {
+        class: "detail-card card-fx reveal",
+        attrs: {
+          style: `--i:${i}`,
+          role: "button",
+          tabindex: "0",
+          "aria-haspopup": "dialog",
+          "aria-label": `View details for ${title}`,
+        },
+      },
+      [
+        cover,
+        el("span", { class: "project-tag", text: type }),
+        el("h3", { text: title }),
+        summary ? el("p", { text: summary }) : null,
+        el("span", { class: "detail-more" }, [
+          document.createTextNode("View details"),
+          icon("fa-solid fa-arrow-right"),
+        ]),
+      ].filter(Boolean),
+    );
+    const open = () => openPortfolioDetail(item, type);
+    card.addEventListener("click", open);
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        open();
+      }
+    });
+    container.appendChild(card);
+  });
+}
+
+function renderExperience() {
+  const items = portfolioData.experience || [];
+  const container = $("experienceContainer");
+  if (!items.length) {
+    container.appendChild(
+      el("p", {
+        class: "details-empty",
+        text: "Add practical experience details in js/data.js.",
+      }),
+    );
+    return;
+  }
+  items.forEach((item, i) => {
+    const card = el(
+      "article",
+      { class: "detail-card card-fx reveal", attrs: { style: `--i:${i}` } },
+      [
+        el("span", { class: "project-tag", text: item.tag || "Experience" }),
+        el("h3", { text: item.role || "Practical contribution" }),
+        item.location
+          ? el("p", {
+              class: "detail-meta",
+              text: `${item.duration || ""} · ${item.location}`,
+            })
+          : null,
+        item.tasks && item.tasks.length
+          ? el(
+              "ul",
+              { class: "bul" },
+              item.tasks.map((task) => el("li", { text: task })),
+            )
+          : null,
+      ].filter(Boolean),
+    );
+    container.appendChild(card);
+  });
 }
 
 function renderPrinciples() {
@@ -347,56 +635,88 @@ function renderPrinciples() {
   );
 }
 
-function renderExperience() {
-  portfolioData.experience.forEach((e, i) =>
-    $("experienceContainer").appendChild(
+function renderEducation() {
+  portfolioData.education
+    .filter((education) => education.degree)
+    .forEach((education, i) =>
+    $("educationContainer").appendChild(
       el(
         "li",
         { class: "exp-card card-fx reveal", attrs: { style: `--i:${i}` } },
         [
           el("div", { class: "exp-top" }, [
-            el("span", { class: "exp-tag", text: e.tag }),
-            el("span", { class: "exp-duration", text: e.duration }),
+            el("span", { class: "exp-tag", text: education.status || "Education" }),
+            el("span", {
+              class: "exp-duration",
+              text: [education.startDate, education.endDate]
+                .filter(Boolean)
+                .join(" – "),
+            }),
           ]),
-          el("h3", { text: e.role }),
-          el("p", { class: "exp-location", text: e.location }),
+          el("h3", { text: education.degree }),
+          el("p", {
+            class: "exp-location",
+            text: [
+              education.field,
+              education.institution,
+              education.specialization,
+              education.currentCGPA
+                ? `CGPA ${education.currentCGPA}`
+                : null,
+            ]
+              .filter(Boolean)
+              .join(" · "),
+          }),
           el(
             "ul",
             { class: "exp-tasks" },
-            e.tasks.map((t) => el("li", { text: t })),
+            (education.achievements || []).map((achievement) =>
+              el("li", { text: achievement }),
+            ),
           ),
         ],
       ),
     ),
   );
-  // Education / certifications render only when real entries exist.
-  const edu = portfolioData.education.filter((x) => x.degree);
-  const certs = portfolioData.certifications || [];
-  if (edu.length || certs.length) {
-    const grid = el("div", { class: "edu-grid" });
-    edu.forEach((x) =>
-      grid.appendChild(
-        el("article", { class: "edu-card card-fx reveal" }, [
-          el("h3", { text: x.degree }),
-          el("p", { text: x.institution }),
-          el(
-            "ul",
-            { class: "exp-tasks" },
-            (x.highlights || []).map((t) => el("li", { text: t })),
-          ),
-        ]),
-      ),
-    );
-    certs.forEach((c) =>
-      grid.appendChild(
-        el("article", { class: "edu-card card-fx reveal" }, [
-          el("h3", { text: c.name || c.title }),
-          el("p", { text: [c.issuer, c.date].filter(Boolean).join(" · ") }),
-        ]),
-      ),
-    );
-    $("eduContainer").appendChild(grid);
-  }
+}
+
+function renderPortfolioSections() {
+  renderDetailCards(
+    "internshipsContainer",
+    portfolioData.internships || [],
+    "Internship",
+    "Add internship details in js/data.js.",
+  );
+  renderDetailCards(
+    "hackathonsContainer",
+    portfolioData.hackathons || [],
+    "Hackathon",
+    "Add hackathon details in js/data.js.",
+  );
+  renderDetailCards(
+    "certificatesContainer",
+    portfolioData.certifications || [],
+    "Certificate",
+    "Add certificates in js/data.js.",
+  );
+  renderDetailCards(
+    "leadershipContainer",
+    portfolioData.leadershipAndContributions || [],
+    "Leadership & contribution",
+    "Add leadership details in js/data.js.",
+  );
+  renderDetailCards(
+    "communitiesContainer",
+    portfolioData.communities || [],
+    "Community",
+    "Add community participation in js/data.js.",
+  );
+  renderDetailCards(
+    "qaContainer",
+    portfolioData.qaExperience || [],
+    "QA experience",
+    "Add software testing experience in js/data.js.",
+  );
 }
 
 function renderContact() {
@@ -427,7 +747,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSkills();
   renderProjects();
   renderPrinciples();
+  renderEducation();
   renderExperience();
+  renderPortfolioSections();
   renderContact();
   $("year").textContent = new Date().getFullYear();
   document.dispatchEvent(new Event("portfolio:rendered"));

@@ -15,6 +15,7 @@
     border-color 0.3s;
 }
 .project-cover {
+  scroll-margin-top: 6rem;
   position: relative;
   aspect-ratio: 16/9;
   overflow: hidden;
@@ -188,4 +189,29 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
+}
+.media-preview {
+  min-width: 0;
+}
+.media-frame,
+.media-image {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: var(--r);
+  background: var(--bg-alt);
+}
+.media-frame {
+  min-height: min(60vh, 520px);
+}
+.document-frame {
+  height: min(70vh, 680px);
+}
+.media-image {
+  max-height: min(70vh, 680px);
+  object-fit: contain;
+}
+.media-fallback {
+  color: var(--accent);
+  font-size: 0.9rem;
 }

@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Anna Smith | Full-Stack &amp; AI Application Developer</title>
+    <title>Gauri Bhasme | Full-Stack &amp; AI Application Developer</title>
     <meta
       name="description"
-      content="Portfolio of Anna Smith: full-stack and AI-powered web applications built with security in mind. Projects, skills, experience and contact."
+      content="Portfolio of Gauri Bhasme: full-stack and AI-powered web applications built with security in mind. Projects, skills, experience and contact."
     />
     <meta name="theme-color" content="#0B1220" />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="Anna Smith | Full-Stack &amp; AI Application Developer"
+      content="Gauri Bhasme | Full-Stack &amp; AI Application Developer"
     />
     <meta
       property="og:description"
       content="Full-stack and AI-powered applications, built with security in mind."
     />
-    <meta property="og:image" content="assets/profile.jpg" />
+    <meta property="og:image" content="assets/profile-photo.jpeg" />
     <meta name="twitter:card" content="summary" />
     <link rel="icon" href="./assets/Icon.png" type="image/png" />
     <link
@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="css/aboutsection.css" />
     <link rel="stylesheet" href="css/skillsection.css" />
     <link rel="stylesheet" href="css/projectsection.css" />
+    <link rel="stylesheet" href="css/portfolio-details.css" />
     <link rel="stylesheet" href="css/securitysection.css" />
     <link rel="stylesheet" href="css/experiencesection.css" />
     <link rel="stylesheet" href="css/contactsection.css" />
@@ -59,10 +60,32 @@
       >
       <nav class="nav-links" id="navMenu" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#engineering">Engineering</a>
-        <a href="#experience">Experience</a>
+        <details class="nav-group">
+          <summary>Work</summary>
+          <div class="nav-submenu">
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#internships">Internships</a>
+            <a href="#hackathons">Hackathons</a>
+          </div>
+        </details>
+        <details class="nav-group">
+          <summary>Learning</summary>
+          <div class="nav-submenu">
+            <a href="#skills">Skills</a>
+            <a href="#certificates">Certificates</a>
+            <a href="#education">Education</a>
+            <a href="#communities">Communities</a>
+          </div>
+        </details>
+        <details class="nav-group">
+          <summary>Engineering</summary>
+          <div class="nav-submenu">
+            <a href="#qa">QA</a>
+            <a href="#engineering">Security</a>
+            <a href="#leadership">Leadership</a>
+          </div>
+        </details>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-actions">
@@ -118,7 +141,7 @@
           <div class="photo-wrap">
             <img
               id="heroImage"
-              alt="Portrait of Anna Smith"
+              alt="Portrait of Gauri Bhasme"
               width="562"
               height="700"
               fetchpriority="high"
@@ -163,6 +186,69 @@
           <h2 id="projectsTitle">Featured projects</h2>
         </div>
         <div class="projects-grid" id="projectsContainer"></div>
+      </section>
+
+      <!-- INTERNSHIPS -->
+      <section id="internships" class="portfolio-details section" aria-labelledby="internshipsTitle">
+        <div class="section-head reveal">
+          <p class="mono kicker">Internships</p>
+          <h2 id="internshipsTitle">Where I have contributed</h2>
+        </div>
+        <div class="details-grid" id="internshipsContainer"></div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="portfolio-details section" aria-labelledby="experienceTitle">
+        <div class="section-head reveal">
+          <p class="mono kicker">Practical experience</p>
+          <h2 id="experienceTitle">How I have contributed</h2>
+        </div>
+        <div class="details-grid" id="experienceContainer"></div>
+      </section>
+
+      <!-- HACKATHONS -->
+      <section id="hackathons" class="portfolio-details section" aria-labelledby="hackathonsTitle">
+        <div class="section-head reveal">
+          <p class="mono kicker">Hackathons</p>
+          <h2 id="hackathonsTitle">Building under pressure</h2>
+        </div>
+        <div class="details-grid" id="hackathonsContainer"></div>
+      </section>
+
+      <!-- CERTIFICATES -->
+      <section id="certificates" class="portfolio-details section" aria-labelledby="certificatesTitle">
+        <div class="section-head reveal">
+          <p class="mono kicker">Certificates</p>
+          <h2 id="certificatesTitle">Learning that I can show</h2>
+        </div>
+        <div class="details-grid" id="certificatesContainer"></div>
+      </section>
+
+      <!-- LEADERSHIP -->
+      <section id="leadership" class="portfolio-details section" aria-labelledby="leadershipTitle">
+        <div class="section-head reveal">
+          <p class="mono kicker">Leadership &amp; contributions</p>
+          <h2 id="leadershipTitle">Sharing what I learn</h2>
+        </div>
+        <div class="details-grid" id="leadershipContainer"></div>
+      </section>
+
+      <!-- COMMUNITIES -->
+      <section id="communities" class="portfolio-details section" aria-labelledby="communitiesTitle">
+        <div class="section-head reveal">
+          <p class="mono kicker">Communities &amp; activities</p>
+          <h2 id="communitiesTitle">Learning through practice</h2>
+        </div>
+        <div class="details-grid" id="communitiesContainer"></div>
+      </section>
+
+      <!-- QA EXPERIENCE -->
+      <section id="qa" class="portfolio-details section" aria-labelledby="qaTitle">
+        <div class="section-head reveal">
+          <p class="mono kicker">Software testing</p>
+          <h2 id="qaTitle">Quality assurance in practice</h2>
+        </div>
+        <div class="details-grid" id="qaContainer"></div>
       </section>
 
       <!-- ENGINEERING / SECURITY -->
@@ -236,18 +322,17 @@
         <div class="principles" id="principlesContainer"></div>
       </section>
 
-      <!-- EXPERIENCE -->
+      <!-- EDUCATION -->
       <section
-        id="experience"
+        id="education"
         class="experience section"
-        aria-labelledby="expTitle"
+        aria-labelledby="educationTitle"
       >
         <div class="section-head reveal">
-          <p class="mono kicker">Experience</p>
-          <h2 id="expTitle">Hands-on experience</h2>
+          <p class="mono kicker">Education</p>
+          <h2 id="educationTitle">Academic journey</h2>
         </div>
-        <ol class="timeline" id="experienceContainer"></ol>
-        <div id="eduContainer"></div>
+        <ol class="timeline" id="educationContainer"></ol>
       </section>
 
       <!-- CONTACT -->

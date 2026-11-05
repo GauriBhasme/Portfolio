@@ -21,16 +21,6 @@
 }
 .hero h1 .w {
   display: inline-block;
-  opacity: 0;
-  transform: translateY(0.5em);
-  animation: wordIn 0.6s var(--ease) forwards;
-  animation-delay: calc(var(--w) * 70ms + 120ms);
-}
-@keyframes wordIn {
-  to {
-    opacity: 1;
-    transform: none;
-  }
 }
 .role-line {
   margin-top: var(--s3);
@@ -49,12 +39,7 @@
   margin-left: 3px;
   vertical-align: -0.2em;
   background: var(--accent);
-  animation: blink 1s steps(1) infinite;
-}
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
+  display: none;
 }
 .description {
   margin-top: var(--s2);
@@ -138,35 +123,10 @@
   stroke-width: 1;
   opacity: 0.55;
   stroke-dasharray: 6 8;
-  animation: dash 24s linear infinite;
-}
-@keyframes dash {
-  to {
-    stroke-dashoffset: -280;
-  }
 }
 .nodes-dots circle {
   fill: var(--accent);
-  animation: pulse 3.2s ease-in-out infinite;
 }
-.nodes-dots circle:nth-child(2n) {
-  animation-delay: 1.2s;
-}
-.nodes-dots circle:nth-child(3n) {
-  animation-delay: 2.2s;
-}
-@keyframes pulse {
-  50% {
-    opacity: 0.25;
-    r: 6;
-  }
-}
-
-/* @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-} */
 
 .photo-wrap {
   position: absolute;
@@ -211,7 +171,6 @@
   box-shadow: var(--shadow);
   font-size: 1.6rem;
   color: var(--accent);
-  animation: bob 5s ease-in-out infinite;
   transition: border-color 0.2s;
 }
 .float-tech li:hover {
@@ -224,22 +183,14 @@
 .float-tech li:nth-child(2) {
   top: 14%;
   right: 2%;
-  animation-delay: -1.2s;
 }
 .float-tech li:nth-child(3) {
   bottom: 12%;
   left: 0;
-  animation-delay: -2.4s;
 }
 .float-tech li:nth-child(4) {
   bottom: 4%;
   right: 12%;
-  animation-delay: -3.6s;
-}
-@keyframes bob {
-  50% {
-    transform: translateY(-12px);
-  }
 }
 @media (max-width: 860px) {
   .hero {
@@ -273,32 +224,7 @@
   }
 }
 
-/* SPLIT ANIMATION */
 .hero {
   position: relative;
   z-index: 2;
-}
-.hero-text,
-.hero-visual {
-  will-change: transform, opacity;
-}
-.hero-text {
-  transform: translateX(calc(var(--split, 0) * -90px));
-  opacity: calc(1 - var(--split, 0) * 1.1);
-}
-.hero-visual {
-  transform: translateX(calc(var(--split, 0) * 90px));
-  opacity: calc(1 - var(--split, 0) * 1.1);
-}
-#about {
-  transform: translateY(calc((1 - var(--rise, 1)) * 70px));
-  opacity: calc(0.35 + var(--rise, 1) * 0.65);
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-text,
-  .hero-visual,
-  #about {
-    transform: none !important;
-    opacity: 1 !important;
-  }
 }

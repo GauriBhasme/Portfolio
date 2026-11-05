@@ -46,14 +46,38 @@ const finePointer = window.matchMedia(
       ? "fa-solid fa-xmark"
       : "fa-solid fa-bars";
   };
+  const groups = [...menu.querySelectorAll(".nav-group")];
+  const closeGroups = (except) =>
+    groups.forEach((group) => {
+      if (group !== except) group.removeAttribute("open");
+    });
+  groups.forEach((group) => {
+    const summary = group.querySelector("summary");
+    summary.addEventListener("click", (event) => {
+      event.preventDefault();
+      const willOpen = !group.open;
+      closeGroups(group);
+      group.open = willOpen;
+    });
+    group.addEventListener("mouseenter", () => {
+      closeGroups(group);
+    });
+  });
   toggle.addEventListener("click", () =>
     setOpen(!menu.classList.contains("open")),
   );
   menu.addEventListener("click", (e) => {
-    if (e.target.closest("a")) setOpen(false);
+    if (e.target.closest("a")) {
+      closeGroups();
+      setOpen(false);
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target)) closeGroups();
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && menu.classList.contains("open")) {
+      closeGroups();
       setOpen(false);
       toggle.focus();
     }
@@ -107,51 +131,10 @@ document.addEventListener("portfolio:rendered", () => {
     targets.forEach((t) => io.observe(t));
   } else targets.forEach((t) => t.classList.add("in"));
 
-  // role typing
-  const out = document.getElementById("roleTyped"),
-    roles = portfolioData.hero.roles;
-  if (reduceMotion) {
-    out.textContent = roles[0];
-    document.querySelector(".caret").style.display = "none";
-  } else {
-    let r = 0,
-      c = 0,
-      del = false;
-    const tick = () => {
-      const word = roles[r];
-      c += del ? -1 : 1;
-      out.textContent = word.slice(0, c);
-      let wait = del ? 28 : 65;
-      if (!del && c === word.length) {
-        del = true;
-        wait = 1700;
-      } else if (del && c === 0) {
-        del = false;
-        r = (r + 1) % roles.length;
-        wait = 350;
-      }
-      setTimeout(tick, wait);
-    };
-    tick();
-  }
-
-  // count-up stats (final value is already in the DOM as text if motion is off)
-  const counters = document.querySelectorAll("[data-count]");
-  if (!reduceMotion)
-    counters.forEach((n) => {
-      const end = +n.dataset.count,
-        t0 = performance.now() + 500;
-      n.textContent = "0";
-      const step = (t) => {
-        const p = Math.min(Math.max((t - t0) / 1100, 0), 1);
-        n.textContent = Math.round(end * (1 - Math.pow(1 - p, 3)));
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    });
+  document.getElementById("roleTyped").textContent = portfolioData.hero.roles[0];
 
   // timeline fill follows scroll
-  const tl = document.getElementById("experienceContainer");
+  const tl = document.getElementById("educationContainer");
   const fill = () => {
     const r = tl.getBoundingClientRect();
     tl.style.setProperty(
@@ -175,30 +158,6 @@ document.addEventListener("portfolio:rendered", () => {
       setTimeout(() => rp.remove(), 650);
     }),
   );
-  // hero splits apart as you scroll down, About rises into place
-  if (!reduceMotion) {
-    const hero = document.getElementById("hero"),
-      about = document.getElementById("about"),
-      root = document.documentElement;
-    let ticking = false;
-    const split = () => {
-      const p = Math.min(Math.max(scrollY / (hero.offsetHeight * 0.75), 0), 1);
-      root.style.setProperty("--split", p.toFixed(3));
-      root.style.setProperty("--rise", p.toFixed(3));
-      ticking = false;
-    };
-    addEventListener(
-      "scroll",
-      () => {
-        if (!ticking) {
-          ticking = true;
-          requestAnimationFrame(split);
-        }
-      },
-      { passive: true },
-    );
-    split();
-  }
   if (finePointer && !reduceMotion) {
     // spotlight glow follows pointer
     document.querySelectorAll(".card-fx").forEach((c) =>
@@ -244,29 +203,18 @@ document.addEventListener("portfolio:rendered", () => {
         b.style.setProperty("--by", "0px");
       });
     });
-    // hero parallax
-    const hv = document.getElementById("heroVisual");
-    hv.addEventListener("pointermove", (e) => {
-      const r = hv.getBoundingClientRect();
-      hv.style.setProperty(
-        "--px",
-        ((e.clientX - r.left) / r.width - 0.5).toFixed(2),
-      );
-      hv.style.setProperty(
-        "--py",
-        ((e.clientY - r.top) / r.height - 0.5).toFixed(2),
-      );
-    });
-    hv.addEventListener("pointerleave", () => {
-      hv.style.setProperty("--px", 0);
-      hv.style.setProperty("--py", 0);
-    });
   }
 
   // modal: close on backdrop click
   const modal = document.getElementById("projectModal");
   modal.addEventListener("click", (e) => {
     if (e.target === modal) modal.close();
+  });
+  modal.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") modal.close();
+  });
+  modal.addEventListener("close", () => {
+    if (modal.returnFocus) modal.returnFocus.focus();
   });
 });
 
