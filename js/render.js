@@ -579,44 +579,6 @@ function renderDetailCards(containerId, items, type, emptyMessage) {
   });
 }
 
-function renderExperience() {
-  const items = portfolioData.experience || [];
-  const container = $("experienceContainer");
-  if (!items.length) {
-    container.appendChild(
-      el("p", {
-        class: "details-empty",
-        text: "Add practical experience details in js/data.js.",
-      }),
-    );
-    return;
-  }
-  items.forEach((item, i) => {
-    const card = el(
-      "article",
-      { class: "detail-card card-fx reveal", attrs: { style: `--i:${i}` } },
-      [
-        el("span", { class: "project-tag", text: item.tag || "Experience" }),
-        el("h3", { text: item.role || "Practical contribution" }),
-        item.location
-          ? el("p", {
-              class: "detail-meta",
-              text: `${item.duration || ""} · ${item.location}`,
-            })
-          : null,
-        item.tasks && item.tasks.length
-          ? el(
-              "ul",
-              { class: "bul" },
-              item.tasks.map((task) => el("li", { text: task })),
-            )
-          : null,
-      ].filter(Boolean),
-    );
-    container.appendChild(card);
-  });
-}
-
 function renderPrinciples() {
   portfolioData.principles.forEach((p, i) =>
     $("principlesContainer").appendChild(
@@ -748,7 +710,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderPrinciples();
   renderEducation();
-  renderExperience();
   renderPortfolioSections();
   renderContact();
   $("year").textContent = new Date().getFullYear();

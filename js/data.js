@@ -358,64 +358,6 @@ const portfolioData = {
     },
   ],
 
-  // ---------------experience section--------------------
-  experience: [
-    // {
-    //   role: "",
-    //   organization: "",
-    //   responsibilities: [
-
-    //   ],
-    //   skillsUsed: [],
-    //   outcome: ""
-    // }
-    {
-      tag: "Hackathon",
-      duration: "Jan 2026",
-      role: "Team Web Developer — Smart Complaint System",
-      location: "College Hackathon",
-      tasks: [
-        "Built responsive UI for complaint dashboard",
-        "Integrated dynamic data rendering",
-        "Collaborated with backend team",
-      ],
-    },
-    {
-      tag: "Virtual Internship",
-      duration: "Dec 2025 – Jan 2026",
-      role: "Frontend Intern",
-      location: "Remote",
-      tasks: [
-        "Developed modular UI components",
-        "Improved responsiveness",
-        "Optimized page performance",
-      ],
-    },
-    {
-      tag: "Team Project",
-      duration: "Nov 2025",
-      role: "Full Stack Contributor",
-      location: "Academic Project",
-      tasks: [
-        "Designed database schema",
-        "Implemented REST API",
-        "Handled Git collaboration",
-      ],
-    },
-    {
-      tag: "Practical Experience",
-      duration: "Ongoing",
-      role: "Independent Software Tester",
-      location: "Personal and peer projects",
-      tasks: [
-        "Performed manual testing of personal projects and peer-developed web applications.",
-        "Validated user flows and compared actual behaviour with expected outcomes.",
-        "Identified usability issues and documented reproducible observations.",
-        "Developed a more structured QA approach using test scenarios and test cases.",
-      ],
-    },
-  ],
-
   qaExperience: [
     {
       id: "qa-experience-01",
@@ -602,7 +544,7 @@ const portfolioData = {
         recognition: "Second Rank in AI Amravati Hackathon",
       },
       linkedProjectId: "project-amrasetu",
-      certificate: "./assets/images/hackathons/certs/Amravati_Hackathon_Cert.heif",
+      certificate: "./assets/images/hackathons/certs/Amravati_Hackathon_Cert.jpg",
       coverImage: "./assets/images/hackathons/cover_images/AI_hackathon.jpg",
     },
     {
@@ -624,7 +566,7 @@ const portfolioData = {
         aiIntegration: "AI-powered intelligent functionality",
       },
       linkedProjectId: "project-digital-waste-cleaner",
-      certificate: "./assets/images/hackathons/certs/ecothon.heif",
+      certificate: "./assets/images/hackathons/certs/ecothon_cert.jpg",
       coverImage: "./assets/images/hackathons/cover_images/ecothon.jpg",
     },
     {
@@ -674,14 +616,47 @@ const portfolioData = {
   // ---------------certifications section--------------------
 
   certifications: [
-    { id: "cert-01", name: "CCNA 1 & CCNA 2", issuer: "Cisco Networking Academy", domain: "Networking", whatILearned: ["Networking fundamentals", "Network communication and protocols", "Network infrastructure concepts"] },
+    { id: "cert-01", name: "CCNA 1 & CCNA 2", issuer: "Cisco Networking Academy", domain: "Networking", certificate: "./assets/images/certificates/CCNA_certificate.pdf", whatILearned: ["Networking fundamentals", "Network communication and protocols", "Network infrastructure concepts"] },
     { id: "cert-02", name: "Cybersecurity Essentials", issuer: "Cisco Networking Academy", domain: "Cybersecurity", whatILearned: ["Cybersecurity fundamentals", "Common cyber threats and vulnerabilities", "Security principles and risk awareness"] },
-    { id: "cert-03", name: "CyberOps Associate", issuer: "Cisco Networking Academy", domain: "Security Operations", whatILearned: ["Security operations fundamentals", "Security monitoring and incident analysis", "Cyber threat detection concepts"] },
+    { id: "cert-03", name: "CyberOps Associate", issuer: "Cisco Networking Academy", domain: "Security Operations", certificate: "./assets/images/certificates/CyberOps_Certificate_Cisco.pdf", whatILearned: ["Security operations fundamentals", "Security monitoring and incident analysis", "Cyber threat detection concepts"] },
     { id: "cert-04", name: "Cyber Threat Intelligence", issuer: "Cisco Networking Academy", domain: "Threat Intelligence", whatILearned: ["Cyber threat intelligence fundamentals", "Threat identification and analysis"] },
-    { id: "cert-05", name: "Junior Cybersecurity Analyst Career Path", issuer: "Cisco Networking Academy", domain: "Cybersecurity", whatILearned: ["Cybersecurity analysis fundamentals", "Security monitoring", "Threat investigation"] },
-    { id: "cert-06", name: "Ethical Hacking", issuer: "NPTEL", domain: "Ethical Hacking", whatILearned: ["Ethical hacking fundamentals", "Security assessment concepts", "Vulnerability analysis"] },
+    { id: "cert-05", name: "Junior Cybersecurity Analyst Career Path", issuer: "Cisco Networking Academy", domain: "Cybersecurity", certificate: "./assets/images/certificates/Junior_Cybersecurity_Analyst_Career_Path.pdf", whatILearned: ["Cybersecurity analysis fundamentals", "Security monitoring", "Threat investigation"] },
+    { id: "cert-06", name: "Ethical Hacking", issuer: "NPTEL", domain: "Ethical Hacking", certificate: "./assets/images/certificates/NPTEL_Ethical_Hacking_Cert.pdf", whatILearned: ["Ethical hacking fundamentals", "Security assessment concepts", "Vulnerability analysis"] },
     { id: "cert-07", name: "AWS Cloud Quest - Security Badge", issuer: "Amazon Web Services", domain: "Cloud Security", whatILearned: ["AWS cloud security concepts", "Identity and Access Management", "Cloud security best practices"] },
-    { id: "cert-08", name: "Python 101 for Security", issuer: "TCM Security", domain: "Programming / Cybersecurity", whatILearned: ["Python programming fundamentals", "Security-focused Python scripting", "Automation concepts"] },
+    { id: "cert-08", name: "Python 101 for Security", issuer: "TCM Security", domain: "Programming / Cybersecurity", certificate: "./assets/images/certificates/Python100_TCM.pdf", whatILearned: ["Python programming fundamentals", "Security-focused Python scripting", "Automation concepts"] },
+    { id: "cert-09", name: "JavaScript Essentials 1", issuer: "Cisco Networking Academy", domain: "Programming", certificate: "./assets/images/certificates/JavaScript_Essentials_1 (1).pdf", whatILearned: ["JavaScript fundamentals", "Programming logic", "Core language concepts"] },
+    { id: "cert-10", name: "Network Technician Career Path", issuer: "Cisco Networking Academy", domain: "Networking", certificate: "./assets/images/certificates/Network_Technician_Career_Path.pdf", whatILearned: ["Networking foundations", "Network troubleshooting", "Network technician skills"] },
+    { id: "cert-11", name: "Postman API Fundamentals Student Expert", issuer: "Postman", domain: "API Development", certificate: "./assets/images/certificates/Postman - Postman API Fundamentals Student Expert - 2025-09-27.png", coverImage: "./assets/images/certificates/Postman - Postman API Fundamentals Student Expert - 2025-09-27.png", whatILearned: ["API requests and responses", "API testing with Postman", "Collection workflows"] },
+    { id: "cert-12", name: "Postman Student Program", issuer: "Postman", domain: "API Development", certificate: "./assets/images/certificates/Postman_Student_Program_Certificate.pdf", whatILearned: ["API development fundamentals", "Testing and documentation workflows"] },
+    { id: "cert-13", name: "Data Analytics Essentials", issuer: "Cisco Networking Academy", domain: "Data Analytics", certificate: "./assets/images/certificates/Data_Analytics_Essentials.pdf", whatILearned: ["Data analysis fundamentals", "Data interpretation", "Analytical workflows"] },
+    { id: "cert-14", name: "Operating Systems Basics", issuer: "Cisco Networking Academy", domain: "Operating Systems", certificate: "./assets/images/certificates/Operating_Systems_cert.pdf", whatILearned: ["Operating system concepts", "System management fundamentals"] },
+    {
+      id: "cert-hackfusion-03",
+      name: "Hack Fusion 3 Certificate",
+      issuer: "Manipal",
+      domain: "Hackathon",
+      certificate: "./assets/images/hackathons/certs/hackfusion3.png",
+      coverImage: "./assets/images/hackathons/certs/hackfusion3.png",
+      whatILearned: ["Built an AI-powered pharmacy application", "Collaborated in a hackathon team"],
+    },
+    {
+      id: "cert-ecothon",
+      name: "Ecothon Certificate",
+      issuer: "SIP College of Engineering",
+      domain: "Environmental Innovation / Hackathon",
+      certificate: "./assets/images/hackathons/certs/ecothon_cert.jpg",
+      coverImage: "./assets/images/hackathons/certs/ecothon_cert.jpg",
+      whatILearned: ["Developed an AI-powered environmental solution", "Applied technology to garbage-cleaning challenges"],
+    },
+    {
+      id: "cert-ai-amravati",
+      name: "AI Amravati Hackathon Certificate",
+      issuer: "AI Amravati Hackathon",
+      domain: "AI / Innovation Hackathon",
+      certificate: "./assets/images/hackathons/certs/Amravati_Hackathon_Cert.jpg",
+      coverImage: "./assets/images/hackathons/certs/Amravati_Hackathon_Cert.jpg",
+      whatILearned: ["Built AmraSetu, an AI-powered hyperlocal platform", "Achieved second rank in the hackathon"],
+    },
   ],
 
   leadershipAndContributions: [
